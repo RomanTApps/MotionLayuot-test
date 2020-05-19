@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+  <Transition
+    motion:constraintSetStart="@+id/old_car"
+    motion:constraintSetEnd="@+id/new_car"
+    motion:duration="50000">
+    <OnSwipe
+      motion:touchAnchorId="@id/carView"
+      motion:touchAnchorSide="right"
+      motion:dragDirection="dragRight" />
+    <KeyFrameSet>
+      <KeyAttribute
+        android:scaleX="2"
+        android:scaleY="2"
+        motion:framePosition="40"
+        motion:target="@id/carView" />
+    </KeyFrameSet>
+  </Transition>
+
+  <ConstraintSet android:id="@+id/old_car">
+    <Constraint
+      android:id="@id/carView"
+      android:layout_width="@dimen/carSize"
+      android:layout_height="@dimen/carSize"
+      motion:layout_constraintBottom_toBottomOf="parent"
+      motion:layout_constraintStart_toStartOf="parent">
+      <CustomAttribute
+        motion:attributeName="crossfade"
+        motion:customFloatValue="0" />
+    </Constraint>
+  </ConstraintSet>
+
+  <ConstraintSet android:id="@+id/new_car">
+    <Constraint
+      android:id="@id/carView"
+      android:layout_width="@dimen/carSize"
+      android:layout_height="@dimen/carSize"
+      motion:layout_constraintBottom_toBottomOf="parent"
+      motion:layout_constraintEnd_toEndOf="parent">
+      <CustomAttribute
+        motion:attributeName="crossfade"
+        motion:customFloatValue="1" />
+    </Constraint>
+  </ConstraintSet>
+
+</MotionScene>
